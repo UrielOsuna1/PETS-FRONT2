@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdopPet — Button Component</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #E8622A;
+      --primary-hover: #D4521E;
+      --primary-fg: #FFFFFF;
+      --secondary: #4A7C59;
+      --secondary-hover: #3A6247;
+      --secondary-fg: #FFFFFF;
+      --destructive: #C0392B;
+      --destructive-hover: #A93226;
+      --bg: #FDF6EE;
+      --surface: #FFFFFF;
+      --text: #1C1A18;
+      --muted: #8C7B6E;
+      --border: #E8DDD4;
+      --ring: #E8622A66;
+      --accent: #F5EDE4;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+
+      --shadow-sm: 0 1px 3px rgba(28, 26, 24, .08), 0 1px 2px rgba(28, 26, 24, .06);
+      --shadow-md: 0 4px 12px rgba(28, 26, 24, .10), 0 2px 4px rgba(28, 26, 24, .06);
+      --shadow-lg: 0 8px 28px rgba(28, 26, 24, .12), 0 4px 8px rgba(28, 26, 24, .06);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 48px 32px;
+    }
+
+    /* ── paw pattern background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23E8622A' fill-opacity='0.04'%3E%3Cellipse cx='19' cy='12' rx='5' ry='6'/%3E%3Cellipse cx='31' cy='10' rx='4' ry='5'/%3E%3Cellipse cx='41' cy='16' rx='4' ry='5'/%3E%3Cellipse cx='11' cy='20' rx='4' ry='5'/%3E%3Cellipse cx='26' cy='28' rx='11' ry='10'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+</html>

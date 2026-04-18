@@ -1,0 +1,141 @@
+<div class="page-wrapper">
+    <div class="container">
+
+        <div *ngIf="!pet" class="not-found">
+            <h2 class="not-found-title">Mascota no encontrada</h2>
+            <a routerLink="/main/pets" class="link-back">Volver al listado</a>
+        </div>
+
+        <ng-container *ngIf="pet">
+
+            <a routerLink="/main/pets" class="back-link">
+                ← Volver al listado
+            </a>
+
+            <div *ngIf="showSuccessMessage" class="success-banner">
+                <span class="success-icon">✓</span>
+                <div>
+                    <p class="success-title">¡Solicitud enviada con éxito!</p>
+                    <p class="success-sub">Nuestro equipo revisará tu solicitud y te contactaremos pronto.</p>
+                </div>
+            </div>
+
+
+            <div class="detail-grid">
+
+                <div class="gallery">
+                    <div class="gallery-main">
+                        <img [src]="pet.images[currentImageIndex]?.image_url" [alt]="pet.name" class="gallery-img" />
+                        <span class="gallery-badge" [ngClass]="getStatusClass(pet.status.name)">
+                            {{ pet.status.name }}
+                        </span>
+                    </div>
+
+                    <div *ngIf="pet.images.length > 1" class="gallery-thumbs">
+                        <button *ngFor="let img of pet.images; let i = index" class="thumb-btn"
+                            [class.thumb-btn--active]="currentImageIndex === i" (click)="setImageIndex(i)">
+                            <img [src]="img.image_url" [alt]="pet.name" class="thumb-img" />
+                        </button>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <h1 class="pet-title">{{ pet.name }}</h1>
+
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="info-card-icon info-card-icon--terracotta">🐾</div>
+                            <div>
+                                <div class="info-card-label">Especie</div>
+                                <div class="info-card-value">{{ pet.species }}</div>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-icon info-card-icon--sage">📅</div>
+                            <div>
+                                <div class="info-card-label">Edad</div>
+                                <div class="info-card-value">{{ getAgeLabel(pet) }}</div>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-icon info-card-icon--accent">📏</div>
+                            <div>
+                                <div class="info-card-label">Tamaño</div>
+                                <div class="info-card-value">{{ pet.size }}</div>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-icon info-card-icon--primary">👤</div>
+                            <div>
+                                <div class="info-card-label">Género</div>
+                                <div class="info-card-value">{{ pet.gender }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3 class="info-box-title">Raza</h3>
+                        <p class="info-box-text">{{ pet.breed }}</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3 class="info-box-title">Sobre {{ pet.name }}</h3>
+                        <p class="info-box-text">{{ pet.description }}</p>
+                    </div>
+
+                    <button *ngIf="pet.status.name === 'Disponible'" class="btn-adopt" (click)="openAdoptionModal()">
+                        ♥ Quiero adoptarlo/a
+                    </button>
+
+                    <div *ngIf="pet.status.name === 'Reservado'" class="reserved-notice">
+                        <p class="reserved-title">Esta mascota está reservada</p>
+                        <p class="reserved-sub">Pronto tendrá un hogar para siempre</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div *ngIf="similarPets.length > 0" class="similar-section">
+                <h2 class="similar-title">Mascotas similares</h2>
+                <div class="similar-grid">
+                    <a *ngFor="let similar of similarPets" [routerLink]="['/main/pets/pets-details', similar.id]"
+                        class="similar-card">
+                        <img [src]="getPrimaryImage(similar)" [alt]="similar.name" class="similar-img" />
+                        <div class="similar-body">
+                            <h3 class="similar-name">{{ similar.name }}</h3>
+                            <p class="similar-meta">{{ similar.species }} • {{ similar.breed }} • {{
+                                getAgeLabel(similar) }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </ng-container>
+    </div>
+
+    <div *ngIf="showAdoptionModal" class="modal-overlay" (click)="closeAdoptionModal()">
+        <div class="modal" (click)="$event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Solicitud de Adopción</h2>
+                    <p class="modal-sub">Solicitar adopción de {{ pet?.name }}</p>
+                </div>
+                <button class="modal-close" (click)="closeAdoptionModal()">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <label class="modal-label">¿Por qué quieres adoptar a {{ pet?.name }}?</label>
+                <textarea class="modal-textarea" [(ngModel)]="adoptionMessage"
+                    placeholder="Cuéntanos sobre ti, tu experiencia con mascotas, tu hogar y por qué crees que serías un buen hogar para esta mascota..."
+                    rows="6"></textarea>
+                <p class="modal-hint">Esta información nos ayuda a encontrar el mejor hogar para cada mascota.</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-cancel" (click)="closeAdoptionModal()">Cancelar</button>
+                <button class="btn-submit" (click)="submitAdoption()">Enviar solicitud</button>
+            </div>
+        </div>
+    </div>
+
+</div>

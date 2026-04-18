@@ -1,0 +1,178 @@
+:host {
+  display: block;
+  width: 100%;
+
+  --primary: #D4876F;
+  --primary-hover: #c0654a;
+  --foreground: #1c1a18;
+  --foreground-muted: #6b5f58;
+  --destructive: #dc2626;
+  --border: #e2d5cb;
+  --white: #ffffff;
+  --terracotta: #D4876F;
+}
+
+/* top menu styles */
+.top-menu {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* top menu container styles */
+.top-menu-container {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+/* top menu brand styles */
+.top-menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+/* top menu brand hover styles */
+.top-menu-brand:hover {
+  opacity: 0.85;
+}
+
+/* top menu brand icon styles */
+.brand-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary);
+}
+
+/* top menu brand name styles */
+.brand-name {
+  font-size: 1.5rem;
+  /* font-family: Georgia, 'Times New Roman', serif; */
+  color: var(--primary);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* top menu nav links styles */
+.top-menu-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* top menu link styles */
+.top-menu-link {
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+/* add underline effect */
+.top-menu-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.2s ease;
+}
+
+/* top menu link hover and active styles */
+.top-menu-link:hover,
+.top-menu-link.active {
+  color: var(--primary);
+}
+
+/* add hover and active underline effect */
+.top-menu-link:hover::after,
+.top-menu-link.active::after {
+  width: 100%;
+}
+
+/* actions */
+.top-menu-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* action icon styles */
+.action-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.user-link mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B6F5E;
+  transition: color 0.2s;
+}
+
+/* User link */
+.user-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+/* user link hover styles */
+.user-link:hover {
+  color: var(--primary);
+}
+
+.user-link:hover mat-icon {
+  color: #D4876F;
+}
+
+/* user name styles */
+.user-name {
+  display: none;
+}
+
+/* responsive */
+@media (min-width: 768px) {
+  .user-name {
+    display: inline;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-container {
+    padding: 0 1rem;
+  }
+}

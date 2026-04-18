@@ -1,0 +1,71 @@
+/* main layout styles */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.content-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* button scroll to top styles */
+.btn-scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #D4876F;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(212, 135, 111, 0.3);
+  text-decoration: none;
+}
+
+.btn-scroll-top:hover {
+  background: #E8B4A0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 135, 111, 0.4);
+}
+
+.btn-scroll-top.fade {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.btn-scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.btn-scroll-top mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}

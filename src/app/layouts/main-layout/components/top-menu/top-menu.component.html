@@ -1,0 +1,38 @@
+<!-- top menu -->
+<nav class="top-menu">
+  <!-- top menu container -->
+  <div class="top-menu-container">
+    <!-- brand -->
+    <a class="top-menu-brand" routerLink="/main/home">
+      <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" />
+      </svg>
+      <span class="brand-name">AdopPet</span>
+    </a>
+
+    <!-- top menu links -->
+    <div class="top-menu-links">
+      <a routerLink="/main/home" routerLinkActive="active" class="top-menu-link"> Inicio </a>
+      <a routerLink="/main/pets" routerLinkActive="active" class="top-menu-link"> Mascotas </a>
+      <a routerLink="/main/home" fragment="sobre-nosotros" class="top-menu-link"> Quiénes Somos </a>
+      <a routerLink="/main/home" fragment="contacto" class="top-menu-link"> Contacto </a>
+    </div>
+
+    <!-- actions -->
+    <div class="top-menu-actions">
+      <!-- logged in -->
+      <ng-container *ngIf="isLoggedIn">
+        <a class="user-link" [routerLink]="profileLink">
+          <mat-icon>person</mat-icon>
+          <span class="user-name">{{ userName }}</span>
+        </a>
+
+        <app-button variant="primary" (click)="handleLogout()"> Cerrar sesión </app-button>
+      </ng-container>
+
+      <!-- not logged in -->
+      <app-button *ngIf="!isLoggedIn" variant="primary" routerLink="/login"> Login </app-button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,171 @@
+<div class="page">
+
+    <!-- Header -->
+    <div class="page__header">
+        <h1 class="page__title">Registro de Auditoría</h1>
+        <p class="page__subtitle">Historial de acciones realizadas en el sistema</p>
+    </div>
+
+    <!-- Activity summary -->
+    <div class="summary-panel">
+        <h2 class="summary-panel__title">Resumen de Actividad</h2>
+        <div class="summary-grid">
+
+            <div class="sum-card">
+                <div class="sum-card__value sum-card__value--sage">{{ totalCreations }}</div>
+                <div class="sum-card__label">Creaciones</div>
+            </div>
+
+            <div class="sum-card">
+                <div class="sum-card__value sum-card__value--accent">{{ totalUpdates }}</div>
+                <div class="sum-card__label">Actualizaciones</div>
+            </div>
+
+            <div class="sum-card">
+                <div class="sum-card__value sum-card__value--terracotta">{{ totalApprovals }}</div>
+                <div class="sum-card__label">Aprobaciones</div>
+            </div>
+
+            <div class="sum-card">
+                <div class="sum-card__value sum-card__value--brown">{{ totalActions }}</div>
+                <div class="sum-card__label">Total de Acciones</div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Filter bar dinámica -->
+    <div class="card mb-6">
+        <div class="filter-bar">
+            <!-- Filter icon -->
+            <svg class="filter-bar__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+            </svg>
+
+            <label class="filter-bar__label">Acción:</label>
+            <select class="filter-bar__select" [(ngModel)]="filters.action">
+                <option *ngFor="let opt of actionOptions" [value]="opt.value">{{ opt.label }}</option>
+            </select>
+
+            <label class="filter-bar__label">Usuario ID:</label>
+            <input type="number" class="filter-bar__input" [(ngModel)]="filters.userId" placeholder="ID de usuario">
+
+            <label class="filter-bar__label">IP:</label>
+            <input type="text" class="filter-bar__input" [(ngModel)]="filters.ipAddress" placeholder="Ej: 192.168.1.1">
+
+            <label class="filter-bar__label">Desde:</label>
+            <input type="date" class="filter-bar__select" [(ngModel)]="filters.dateFrom">
+
+            <label class="filter-bar__label">Hasta:</label>
+            <input type="date" class="filter-bar__select" [(ngModel)]="filters.dateTo">
+
+            <button class="filter-bar__clear" (click)="applyFilters()">Aplicar Filtros</button>
+            <button class="filter-bar__clear" (click)="clearFilters()">Limpiar</button>
+
+            <span class="filter-bar__count">
+                {{ filteredLogs.length }} registro{{ filteredLogs.length !== 1 ? 's' : '' }}
+            </span>
+        </div>
+    </div>
+
+    <!-- Loading state -->
+    <div *ngIf="isLoading()" class="card loading-card">
+        <div class="spinner"></div>
+        <p>Cargando logs...</p>
+    </div>
+
+    <!-- Error state -->
+    <div *ngIf="hasError() && !isLoading()" class="card error-card">
+        <p>Error al cargar los logs. Verifica tu conexión o permisos.</p>
+        <button class="btn-retry" (click)="loadLogs()">Reintentar</button>
+    </div>
+
+    <!-- Empty state -->
+    <div *ngIf="!isLoading() && !hasError() && filteredLogs.length === 0" class="card empty-card">
+        <p>No se encontraron registros de auditoría.</p>
+    </div>
+
+    <!-- Audit logs table -->
+    <div *ngIf="!isLoading() && !hasError() && filteredLogs.length > 0" class="card card--table">
+        <div class="table-wrapper">
+            <table class="table">
+                <thead class="table__head">
+                    <tr>
+                        <th class="table__th">Usuario</th>
+                        <th class="table__th">Acción</th>
+                        <th class="table__th">Entidad</th>
+                        <th class="table__th">IP</th>
+                        <th class="table__th">Fecha y Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let log of filteredLogs" class="table__row">
+
+                        <!-- User -->
+                        <td class="table__td">
+                            <div class="user-cell">
+                                <div class="avatar">U</div>
+                                <div>
+                                    <div class="user-cell__name">Usuario #{{ log.userId }}</div>
+                                    <div class="user-cell__role">Usuario</div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- Action badge -->
+                        <td class="table__td">
+                            <span [class]="getActionClass(log.action)">
+                                {{ getActionLabel(log.action) }}
+                            </span>
+                        </td>
+
+                        <!-- Entity -->
+                        <td class="table__td">
+                            <div class="entity-type">{{ log.entityType }}</div>
+                            @if (log.entityId) {
+                            <div class="entity-id">ID: {{ log.entityId }}</div>
+                            }
+                        </td>
+
+                        <!-- IP address -->
+                        <td class="table__td table__td--mono">
+                            {{ log.ipAddress || 'N/A' }}
+                        </td>
+
+                        <!-- Date + time -->
+                        <td class="table__td">
+                            <div class="date-primary">
+                                {{ log.createdAt | date:'mediumDate' }}
+                            </div>
+                            <div class="date-secondary">
+                                {{ log.createdAt | date:'shortTime' }}
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    @if (filteredLogs.length === 0) {
+                    <tr>
+                        <td colspan="5" class="table__empty">No hay registros para mostrar.</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Load More button -->
+    <div *ngIf="!isLoading() && hasMore()" class="text-center mt-4 mb-6">
+        <button class="btn-load-more" (click)="loadMore()">
+            Cargar Más
+        </button>
+    </div>
+
+    <!-- No more results -->
+    <div *ngIf="!isLoading() && !hasMore() && filteredLogs.length > 0" class="text-center mt-4 mb-6">
+        <p class="text-muted">No hay más registros para mostrar</p>
+    </div>
+</div>

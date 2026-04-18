@@ -1,0 +1,12 @@
+<button [type]="type" [disabled]="disabled || loading" [class]="buttonClasses" (click)="handleClick()">
+  <!-- Loading Spinner -->
+  <div class="spinner" *ngIf="loading"></div>
+
+  <!-- Material Icon - SINTAXIS SIMPLE -->
+  <mat-icon *ngIf="icon" class="btn-icon">{{ icon }}</mat-icon>
+
+  <!-- Content -->
+  <span class="btn-text" *ngIf="!loading">
+    <ng-content></ng-content>
+  </span>
+</button>

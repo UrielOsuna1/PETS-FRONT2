@@ -1,0 +1,38 @@
+<aside class="sidebar">
+
+    <!-- Brand -->
+    <div class="sidebar__brand">
+        <a routerLink="/admin/admin-dashboard" class="brand-link">
+            <!-- Heart icon (filled) -->
+            <svg class="brand-link__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                stroke="currentColor" fill="currentColor" stroke-width="1" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+            <span class="brand-link__name">AdopPet</span>
+        </a>
+        <p class="sidebar__tagline">Panel de Administración</p>
+    </div>
+
+    <!-- Nav -->
+    <nav class="sidebar__nav">
+        <ng-container *ngFor="let group of visibleGroups">
+            <h4 class="nav-group-title">{{ group.text }}</h4>
+            <ul class="nav-list">
+                <li *ngFor="let item of group.items">
+                    <a *ngIf="item.route" [routerLink]="item.route" routerLinkActive="nav-item--active"
+                        [routerLinkActiveOptions]="routerLinkOptions" class="nav-item">
+                        <i *ngIf="item.icon" [class]="item.icon"></i>
+                        <span>{{ item.text }}</span>
+                    </a>
+                    <button *ngIf="item.onClick" class="footer-btn footer-btn--logout" (click)="handleItemClick(item)">
+                        <i *ngIf="item.icon" [class]="item.icon"></i>
+                        <span>{{ item.text }}</span>
+                    </button>
+                </li>
+            </ul>
+        </ng-container>
+    </nav>
+
+</aside>

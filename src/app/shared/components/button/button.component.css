@@ -1,0 +1,230 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.12s ease,
+    opacity 0.18s ease,
+    border-color 0.18s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.18s;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(232, 98, 42, 0.4);
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+/* Sizes */
+.btn-sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.btn-md {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 10px;
+}
+
+.btn-lg {
+  height: 46px;
+  padding: 0 26px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.btn-icon.btn-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.btn-icon.btn-lg {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+}
+
+/* Variants */
+.btn-primary {
+  background: #e8622a;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(232, 98, 42, 0.3);
+}
+
+.btn-primary:hover {
+  background: #d4521e;
+  box-shadow: 0 4px 16px rgba(232, 98, 42, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #4a7c59;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(74, 124, 89, 0.25);
+}
+
+.btn-secondary:hover {
+  background: #3a6247;
+  box-shadow: 0 4px 14px rgba(74, 124, 89, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-destructive {
+  background: #c0392b;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.28);
+}
+
+.btn-destructive:hover {
+  background: #a93226;
+  box-shadow: 0 4px 14px rgba(192, 57, 43, 0.38);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #1c1a18;
+  border: 1.5px solid #e8ddd4;
+}
+
+.btn-outline:hover {
+  background: #f5ede4;
+  border-color: #e8622a;
+  color: #e8622a;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #1c1a18;
+}
+
+.btn-ghost:hover {
+  background: #f5ede4;
+  color: #e8622a;
+}
+
+.btn-link {
+  background: transparent;
+  color: #e8622a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+  height: auto;
+}
+
+.btn-link:hover {
+  color: #d4521e;
+  text-decoration-thickness: 2px;
+}
+
+/* Loading state */
+.btn-loading {
+  pointer-events: none;
+}
+
+.btn-loading .btn-text {
+  opacity: 0;
+}
+
+.btn-loading .spinner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.btn-loading.btn-outline .spinner,
+.btn-loading.btn-ghost .spinner {
+  border-color: rgba(28, 26, 24, 0.15);
+  border-top-color: #e8622a;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon - CONFIGURACIÓN PROFESIONAL PARA MAT ICONS */
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit !important;
+}
+
+/* Forzar Material Icons dentro del botón */
+.btn-icon.mat-icon,
+.btn-icon .material-icons {
+  font-family: 'Material Icons' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-flex !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  font-feature-settings: 'liga' !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  color: inherit !important;
+}
+
+/* Full width */
+.w-100 {
+  width: 100%;
+}

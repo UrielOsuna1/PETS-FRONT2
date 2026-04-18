@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'material-icons/iconfont/material-icons.css';
+
+/* Icon libraries */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+.material-icons {
+  font-family: 'Material Icons' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  -webkit-font-feature-settings: 'liga' !important;
+  font-feature-settings: 'liga' !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Estilos globales para InputComponent - MÁS AGRESIVOS */
+app-input mat-icon,
+app-input .mat-icon,
+.input-wrapper mat-icon,
+.input-wrapper .mat-icon,
+app-input .material-icons,
+.input-wrapper .material-icons {
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  display: inline-block !important;
+}
+
+/* Material Icons - CONFIGURACIÓN MÁS DIRECTA */
+.material-icons,
+.material-icons-outlined {
+  font-family: 'Material Icons' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  -webkit-font-feature-settings: 'liga' !important;
+  font-feature-settings: 'liga' !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  color: inherit !important;
+}
+
+/* Forzar mat-icon a mostrar */
+mat-icon {
+  font-family: 'Material Icons' !important;
+  font-size: inherit !important;
+  color: inherit !important;
+}
+
+mat-icon .material-icons {
+  font-family: 'Material Icons' !important;
+}

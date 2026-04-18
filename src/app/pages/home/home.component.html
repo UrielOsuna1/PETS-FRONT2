@@ -1,0 +1,199 @@
+<div class="min-h-screen">
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            Encuentra a tu compañero de vida
+          </h1>
+          <p class="hero-subtitle">
+            Miles de mascotas rescatadas esperan un hogar lleno de amor.
+            Da el primer paso hacia una amistad incondicional.
+          </p>
+          <app-button routerLink="/main/pets" variant="primary" size="lg" icon="pets">
+            Ver mascotas disponibles
+          </app-button>
+        </div>
+
+        <div class="hero-images">
+          <div class="images-col">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=500&fit=crop"
+              alt="Perro feliz" class="img-tall" />
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop"
+              alt="Gato descansando" class="img-short" />
+          </div>
+          <div class="images-col images-col-offset">
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=300&fit=crop"
+              alt="Golden Retriever" class="img-short" />
+            <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400&h=500&fit=crop"
+              alt="Gato persa" class="img-tall" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-nosotros" class="mission-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Nuestra Misión</h2>
+        <p class="section-subtitle">
+          Rescatar, cuidar y encontrar hogares amorosos para mascotas abandonadas.
+          Creemos que cada animal merece una segunda oportunidad.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="mission-card mission-card--terracotta">
+          <div class="mission-icon mission-icon--terracotta">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+          </div>
+          <h3 class="mission-card-title">Rescate</h3>
+          <p class="mission-card-desc">
+            Rescatamos mascotas en situaciones de riesgo y les brindamos refugio seguro.
+          </p>
+        </div>
+
+        <div class="mission-card mission-card--sage">
+          <div class="mission-icon mission-icon--sage">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3 class="mission-card-title">Cuidado</h3>
+          <p class="mission-card-desc">
+            Proporcionamos atención veterinaria, alimentación y amor mientras esperan su hogar.
+          </p>
+        </div>
+
+        <div class="mission-card mission-card--accent">
+          <div class="mission-icon mission-icon--accent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+          <h3 class="mission-card-title">Adopción Responsable</h3>
+          <p class="mission-card-desc">
+            Conectamos mascotas con familias comprometidas a brindarles un hogar para siempre.
+          </p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value stat-value--accent">500+</span>
+          <span class="stat-label">Mascotas Rescatadas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value stat-value--terracotta">350+</span>
+          <span class="stat-label">Adopciones Exitosas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value stat-value--sage">45</span>
+          <span class="stat-label">Esperando un Hogar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Cómo Funciona?</h2>
+        <p class="section-subtitle">
+          Tres simples pasos para encontrar a tu nuevo compañero
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number step-number--terracotta">1</div>
+          <h3 class="step-title">Elige una mascota</h3>
+          <p class="step-desc">
+            Explora nuestro catálogo de mascotas disponibles y conoce sus historias.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number step-number--sage">2</div>
+          <h3 class="step-title">Envía tu solicitud</h3>
+          <p class="step-desc">
+            Completa un breve formulario contándonos por qué quieres adoptar.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number step-number--accent">3</div>
+          <h3 class="step-title">Dale un hogar</h3>
+          <p class="step-desc">
+            Nuestro equipo revisará tu solicitud y te contactará para coordinar la adopción.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <div class="container">
+      <div class="featured-header">
+        <h2 class="section-title">Mascotas Destacadas</h2>
+        <app-button routerLink="/main/pets" variant="link" icon="arrow_forward">
+          Ver todas
+        </app-button>
+      </div>
+
+      <div class="pets-grid">
+        <div *ngFor="let pet of featuredPets" class="pet-card">
+          <div class="pet-card-image">
+            <img [src]="getPrimaryImage(pet)" [alt]="pet.name" class="pet-img" />
+            <div class="pet-status-badge">{{ pet.status.name }}</div>
+          </div>
+
+          <div class="pet-card-body">
+            <h3 class="pet-name">{{ pet.name }}</h3>
+            <div class="pet-meta">
+              <span>{{ pet.species }}</span>
+              <span class="dot">•</span>
+              <span>{{ pet.breed }}</span>
+              <span class="dot">•</span>
+              <span>{{ getAgeLabel(pet) }}</span>
+            </div>
+            <p class="pet-desc">{{ pet.description }}</p>
+            <div class="pet-actions">
+              <app-button [routerLink]="['/main/pets/pets-details', pet.id]" variant="outline" size="lg"
+                [fullWidth]="true" class="flex-fill">
+                Ver detalles
+              </app-button>
+              <app-button [routerLink]="['/main/pets/pets-details', pet.id]" variant="primary" size="lg"
+                [fullWidth]="true" class="flex-fill">
+                Adoptar
+              </app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contacto" class="contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <h2 class="contact-title">¿Tienes preguntas?</h2>
+        <p class="contact-subtitle">
+          Nuestro equipo está aquí para ayudarte en tu viaje de adopción.
+        </p>
+        <app-button href="mailto:info@adoppet.com" variant="primary" size="lg" icon="email">
+          Contáctanos
+        </app-button>
+      </div>
+    </div>
+  </section>
+</div>

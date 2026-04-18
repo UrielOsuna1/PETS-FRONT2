@@ -1,0 +1,7 @@
+<div [class]="alertClasses" role="alert">
+  <mat-icon class="alert-icon">{{ iconText }}</mat-icon>
+  <span class="alert-message">{{ message }}</span>
+  <button *ngIf="dismissible" type="button" class="btn-close" (click)="onDismiss()" aria-label="Close">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

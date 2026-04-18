@@ -1,0 +1,61 @@
+<div class="input-container">
+  <!-- Label -->
+  <label *ngIf="label" class="input-label" [for]="id">
+    {{ label }}
+    <span *ngIf="required" class="input-required">*</span>
+  </label>
+
+  <!-- Input Wrapper -->
+  <div class="input-wrapper" [class]="inputClasses">
+    <!-- Start Icon -->
+    <i *ngIf="iconStart && type !== 'password'" class="material-icons input-icon input-icon-start">
+      {{ iconStart }}
+    </i>
+
+    <!-- Input Field -->
+    <input
+      [id]="id"
+      [type]="inputType"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [autocomplete]="autocomplete"
+      [value]="value"
+      (input)="onInputChange($event)"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+      class="input-field"
+    />
+
+    <!-- Clear Button (solo si es clearable y tiene valor) -->
+    <button
+      *ngIf="showClearButton"
+      type="button"
+      class="input-clear-button"
+      (click)="clearInput()"
+      [disabled]="disabled"
+      [attr.aria-label]="'Limpiar campo'"
+    >
+      <i class="material-icons input-clear-icon"> close </i>
+    </button>
+
+    <i *ngIf="iconStart" class="material-icons input-icon input-icon-start">
+      {{ iconStart }}
+    </i>
+
+    <!-- Password Toggle (if password type) -->
+    <button
+      *ngIf="type === 'password'"
+      type="button"
+      class="input-password-toggle"
+      (click)="togglePassword()"
+      [disabled]="disabled"
+      [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+    >
+      <i class="material-icons input-toggle-icon">
+        {{ showPassword ? 'visibility_off' : 'visibility' }}
+      </i>
+    </button>
+  </div>
+</div>

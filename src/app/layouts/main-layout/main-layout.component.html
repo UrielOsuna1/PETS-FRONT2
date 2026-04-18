@@ -1,0 +1,24 @@
+<div id="app" class="app app-content-full-height app-footer-fixed">
+  <!-- content -->
+  <div id="content" class="app-content">
+    <!-- header -->
+    <div id="header" class="app-header">
+      <!-- top menu -->
+      <app-top-menu></app-top-menu>
+    </div>
+
+    <!-- body -->
+    <div class="content-body" style="flex: 1; padding: 0; margin: 0; width: 100%;">
+      <!-- mensaje de éxito -->
+      <app-alert *ngIf="successMessage" [message]="successMessage" type="success"></app-alert>
+      <!-- mensaje de error -->
+
+      <!-- contenido de la página -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<!-- botón de scroll up -->
+<a href="#" data-click="scroll-top" class="btn-scroll-top">
+  <mat-icon>arrow_upward</mat-icon>
+</a>

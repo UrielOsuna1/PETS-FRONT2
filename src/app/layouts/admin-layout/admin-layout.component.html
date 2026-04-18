@@ -1,0 +1,22 @@
+<div id="app" class="app app-content-full-height app-footer-fixed">
+    <!-- sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <!-- content -->
+    <div id="content" class="app-content">
+        <!-- header -->
+        <div id="header" class="app-header">
+            <!-- header vacío o futuro top-menu -->
+        </div>
+
+        <!-- body -->
+        <div class="content-body" style="flex: 1; padding: 0; margin: 0; width: 100%;">
+            <!-- contenido de la página -->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<!-- botón de scroll up -->
+<a href="#" data-click="scroll-top" class="btn-scroll-top fade">
+    <mat-icon>arrow_upward</mat-icon>
+</a>

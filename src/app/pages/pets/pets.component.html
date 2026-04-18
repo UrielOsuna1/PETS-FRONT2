@@ -1,0 +1,5 @@
+<!-- Solo mostrar contenido cuando no hay una ruta hija activa -->
+<ng-container *ngIf="!hasChildRoute()">
+    <p>pets.component works!</p>
+</ng-container>
+<router-outlet></router-outlet>

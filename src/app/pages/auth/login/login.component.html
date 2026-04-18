@@ -1,0 +1,74 @@
+<!-- login wrapper -->
+<div class="login-wrapper d-flex align-items-center justify-content-center min-vh-100">
+  <!-- login container -->
+  <div class="login-container w-100">
+    <div class="alert-container mb-3">
+      <!-- mensajes: error -->
+      <app-alert *ngIf="errorMessage()" [message]="errorMessage()!" type="error"></app-alert>
+      <!-- mensajes: éxito -->
+      <app-alert *ngIf="successMessage()" [message]="successMessage()!" type="success"></app-alert>
+    </div>
+    <!-- login card -->
+    <div class="login-card">
+      <!-- header -->
+      <div class="login-header text-center mb-4">
+        <!-- logo -->
+        <a class="brand-link d-inline-flex align-items-center gap-2 text-decoration-none mb-3" routerLink="/main/home">
+          <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" />
+          </svg>
+          <span class="brand-name">AdopPet</span>
+        </a>
+        <!-- title -->
+        <h1 class="login-title">Iniciar Sesión</h1>
+        <!-- subtitle -->
+        <p class="login-subtitle">Bienvenido de vuelta</p>
+      </div>
+      <!-- form -->
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <!-- email -->
+        <div class="field-group">
+          <label for="email" class="field-label d-block form-label">Email</label>
+          <app-input type="email" name="email" placeholder="email@ejemplo.com" iconStart="email" formControlName="email"
+            autocomplete="email"></app-input>
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger small mt-1">
+            <div *ngIf="email?.errors?.['required']">El email es requerido</div>
+            <div *ngIf="email?.errors?.['email']">Ingresa un email válido</div>
+          </div>
+        </div>
+        <!-- password -->
+        <div class="field-group">
+          <label for="password" class="field-label d-block form-label">Contraseña</label>
+          <app-input type="password" name="password" placeholder="Contraseña" iconStart="password"
+            formControlName="password" autocomplete="current-password"></app-input>
+          <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger small mt-1">
+            <div *ngIf="password?.errors?.['required']">La contraseña es requerida</div>
+            <div *ngIf="password?.errors?.['minlength']">Mínimo 8 caracteres</div>
+            <div *ngIf="password?.errors?.['maxlength']">Máximo 25 caracteres</div>
+            <div *ngIf="password?.errors?.['passwordStrength']" class="password-requirements">
+              <div *ngIf="!password?.errors?.['passwordStrength']?.hasUpperCase">• Al menos una letra mayúscula</div>
+              <div *ngIf="!password?.errors?.['passwordStrength']?.hasLowerCase">• Al menos una letra minúscula</div>
+              <div *ngIf="!password?.errors?.['passwordStrength']?.hasNumber">• Al menos un número</div>
+              <div *ngIf="!password?.errors?.['passwordStrength']?.hasSpecialChar">• Al menos un carácter especial</div>
+              <div *ngIf="!password?.errors?.['passwordStrength']?.hasNoSpaces">• No contener espacios</div>
+            </div>
+          </div>
+        </div>
+        <!-- login button -->
+        <div class="field-group">
+          <app-button type="submit" variant="primary" size="lg" [fullWidth]="true"
+            [disabled]="isLoading() || loginForm.invalid">
+            {{ isLoading() ? 'Iniciando sesión...' : 'Iniciar Sesión' }}
+          </app-button>
+        </div>
+      </form>
+      <div class="text-left mt-3">
+        <!-- register link -->
+        <app-button routerLink="/register" variant="link">
+          ¿No tienes una cuenta? Regístrate aquí
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

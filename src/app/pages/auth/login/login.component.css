@@ -1,0 +1,158 @@
+:host {
+  --primary: #c0654a;
+  --primary-hover: #a8523a;
+  --brown: #4a3728;
+  --brown-light: #8a6a5a;
+  --cream: #fdf6ee;
+  --terracotta-light: #e8a898;
+  --sage: #8fa882;
+  --border: #e2d5cb;
+  --destructive: #dc2626;
+  --muted: #f5ede6;
+  --white: #ffffff;
+  --shadow: 0 20px 60px rgba(74, 55, 40, 0.12);
+}
+
+/* alert container - same width as login card */
+.alert-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* alert styles */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto 1rem auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* asegurar que los alerts en login tengan el mismo ancho que la card */
+.login-container .alert {
+  max-width: 400px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* sobreescribir estilos del AlertComponent para login */
+.login-container app-alert .alert {
+  max-width: 400px !important;
+  width: 100% !important;
+  margin: 0 auto 1rem auto !important;
+}
+
+.alert-danger {
+  background-color: rgba(220, 38, 38, 0.1);
+  border-color: var(--destructive);
+  color: var(--destructive);
+}
+
+.alert-success {
+  background-color: rgba(143, 168, 130, 0.1);
+  border-color: var(--sage);
+  color: var(--sage);
+}
+
+/* login wrapper styles */
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg,
+      rgba(232, 168, 152, 0.2) 0%,
+      #fdf6ee 50%,
+      rgba(143, 168, 130, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+/* login header styles */
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* brand link styles */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+/* brand link hover styles */
+.brand-link:hover {
+  opacity: 0.85;
+}
+
+/* heart icon styles */
+.heart-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--primary);
+}
+
+/* brand name styles */
+.brand-name {
+  font-size: 1.875rem;
+  /* font-family: Georgia, 'Times New Roman', serif; */
+  color: var(--primary);
+  font-weight: 400;
+}
+
+/* login title styles */
+.login-title {
+  font-size: 1.875rem;
+  /* font-family: Georgia, 'Times New Roman', serif; */
+  color: var(--brown);
+  margin: 0 0 0.5rem;
+  font-weight: 400;
+}
+
+/* login subtitle styles */
+.login-subtitle {
+  color: var(--brown-light);
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* login card styles */
+.login-card {
+  background: var(--white);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* login form styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* field group styles */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* field label styles */
+.field-label {
+  color: var(--brown);
+  font-size: 0.9rem;
+  font-weight: 500;
+}

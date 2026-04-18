@@ -1,0 +1,128 @@
+<div class="page-wrapper">
+    <div class="container">
+        <h1 class="page-title">Mi Perfil</h1>
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading()" class="loading-container">
+            <div class="loading-spinner-terracotta"></div>
+            <p class="loading-text">Cargando información...</p>
+        </div>
+
+        <!-- Error State -->
+        <div *ngIf="errorMessage() && !isLoading()" class="error-state">
+            <app-alert [message]="errorMessage()!" type="error"></app-alert>
+            <button class="btn-retry" (click)="loadSessionInfo()">Reintentar</button>
+        </div>
+
+        <!-- User Profile Card -->
+        <div *ngIf="user() && !isLoading() && !errorMessage()" class="user-card">
+            <div class="user-avatar">{{ getInitial() }}</div>
+            <div class="user-info">
+                <h2 class="user-name">{{ user()?.firstName }} {{ user()?.lastName }}</h2>
+                <div class="user-meta-grid">
+                    <div class="user-meta-item">
+                        <i class="material-icons">email</i>
+                        <div>
+                            <div class="meta-label">Email</div>
+                            <div class="meta-value">{{ maskEmail(user()?.email || '') }}</div>
+                        </div>
+                    </div>
+                    <div *ngIf="user()?.phone" class="user-meta-item">
+                        <i class="material-icons">phone</i>
+                        <div>
+                            <div class="meta-label">Teléfono</div>
+                            <div class="meta-value">{{ maskPhone(user()?.phone) }}</div>
+                        </div>
+                    </div>
+                    <div class="user-meta-item">
+                        <i class="material-icons">calendar_today</i>
+                        <div>
+                            <div class="meta-label">Miembro desde</div>
+                            <div class="meta-value">{{ formatDate(user()?.createdAt || '') }}</div>
+                        </div>
+                    </div>
+                    <div class="user-meta-item">
+                        <i class="material-icons">person</i>
+                        <div>
+                            <div class="meta-label">Rol</div>
+                            <div class="meta-value">{{ userRole() }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="requests-card">
+            <div class="requests-header">
+                <span class="requests-icon">♥</span>
+                <h2 class="requests-title">Mis Solicitudes de Adopción</h2>
+            </div>
+
+
+            <div *ngIf="userRequests().length === 0" class="empty-state">
+                <div class="empty-icon">♥</div>
+                <p class="empty-title">No has realizado ninguna solicitud aún</p>
+                <p class="empty-sub">Explora nuestras mascotas disponibles y encuentra a tu compañero perfecto</p>
+                <a routerLink="/mascotas" class="btn-explore">Ver mascotas disponibles</a>
+            </div>
+
+
+            <div *ngIf="userRequests().length > 0" class="requests-list">
+                <div *ngFor="let request of userRequests()" class="request-item">
+                    <img [src]="getPrimaryImage(request)" [alt]="request.pet?.name" class="request-pet-img" />
+                    <div class="request-body">
+                        <div class="request-top">
+                            <div>
+                                <h3 class="request-pet-name">{{ request.pet?.name }}</h3>
+                                <p class="request-pet-meta">{{ request.pet?.species }} • {{ request.pet?.breed }}</p>
+                            </div>
+                            <div class="request-status" [ngClass]="getStatusClass(request.status.name)">
+                                <span>{{ getStatusIcon(request.status.name) }}</span>
+                                <span>{{ request.status.name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="request-message">
+                            <p class="request-message-label">Tu mensaje:</p>
+                            <p class="request-message-text">{{ request.message }}</p>
+                        </div>
+
+                        <div class="request-footer">
+                            <p class="request-date">Enviada el {{ formatDate(request.created_at) }}</p>
+                            <button *ngIf="request.status.name === 'Pendiente'" class="btn-cancel-request"
+                                (click)="openCancelModal(request)">
+                                Cancelar solicitud
+                            </button>
+                        </div>
+
+                        <div *ngIf="request.status.name === 'Aprobada'" class="approved-notice">
+                            ¡Felicidades! Tu solicitud ha sido aprobada. Nos pondremos en contacto contigo pronto para
+                            coordinar la adopción.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div *ngIf="showCancelModal && requestToCancel" class="modal-overlay" (click)="closeCancelModal()">
+        <div class="modal" (click)="$event.stopPropagation()">
+            <div class="modal-header">
+                <h2 class="modal-title">Cancelar Solicitud</h2>
+                <button class="modal-close" (click)="closeCancelModal()">✕</button>
+            </div>
+            <p class="modal-body">
+                ¿Estás seguro de que quieres cancelar tu solicitud de adopción para
+                <strong>{{ requestToCancel.pet?.name }}</strong>?
+                Esta acción no se puede deshacer.
+            </p>
+            <div class="modal-footer">
+                <button class="btn-keep" (click)="closeCancelModal()">No, mantener</button>
+                <button class="btn-confirm-cancel" (click)="confirmCancel()">Sí, cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</div>
